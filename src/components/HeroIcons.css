@@ -1,0 +1,45 @@
+.hero-icons {
+    margin-bottom: 20px;
+  }
+  
+  .hero-icons h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .hero-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .hero-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+  
+  .hero-icon span {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .hero-icon.selected {
+    border-color: #ffcc00; /* Highlight selected heroes */
+    background-color: rgba(255, 204, 0, 0.2);
+    transform: scale(1.1);
+  }
+  

@@ -1,0 +1,136 @@
+.filter-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1100; /* Ensure it stays on top of overlay */
+}
+
+.filter-menu.desktop {
+  transform: translateX(0); /* Always visible on desktop */
+}
+
+.filter-menu.mobile {
+  transform: translateX(-100%);
+  position: fixed;
+  z-index: 1000;
+}
+
+.filter-menu.mobile.expanded {
+  transform: translateX(0);
+}
+
+.filter-toggle {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  z-index: 1200;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+
+.clear-filters-btn {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.clear-filters-btn:hover {
+  background-color: #b02a37;
+}
+
+@media (max-width: 768px) {
+  .filter-menu {
+    transform: translateX(-100%);
+    position: fixed;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1200; /* Ensure the menu is ABOVE the overlay */
+  }
+
+  .filter-menu.open {
+    transform: translateX(0);
+
+    z-index: 1200;
+  }
+
+  .filter-menu.closed {
+    transform: translateX(-100%);
+  }
+
+  /* Background Overlay (Behind Menu) */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100; /* Set LOWER than menu so it stays behind */
+  }
+
+  /* Mobile Toggle Button */
+  .filter-toggle-btn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ffcc00;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1400;
+    width: auto; /* Ensure the button only takes as much space as needed */
+    height: auto; /* Ensure height adjusts to content */
+    display: inline-block;
+  }
+
+  .filter-toggle-btn:hover {
+    background-color: #e6b800; /* Slightly darker on hover */
+  }
+  /* When the filters are open (button is active) */
+  .filter-toggle-btn.active {
+    background-color: #cc9900; /* Darker Yellow */
+  }
+}
