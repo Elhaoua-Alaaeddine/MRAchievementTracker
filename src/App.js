@@ -16,7 +16,7 @@ function App() {
     map: "",
   });
   const [activeCategory, setActiveCategory] = useState("Galacta's Guide");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+  // const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
   const [isMenuOpen, setIsMenuOpen] = useState(true); // Track menu state
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -34,9 +34,9 @@ function App() {
     );
 
     setAchievements(loadedAchievements);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // const handleResize = () => setIsMobile(window.innerWidth < 768);
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleFilterChange = (type, values) => {
