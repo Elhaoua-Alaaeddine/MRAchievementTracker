@@ -1,8 +1,6 @@
 import React from "react";
-import "./HeroIcons.css"; // Ensure you have styles for the icons
-
+import "./HeroIcons.css";
 function HeroIcons({ type, selected, onSelect }) {
-  // Dummy hero data (replace with actual hero list)
   const heroes = [
     { name: "Iron Man", icon: "/images/ironman.png" },
     { name: "Captain America", icon: "/images/captainamerica.png" },

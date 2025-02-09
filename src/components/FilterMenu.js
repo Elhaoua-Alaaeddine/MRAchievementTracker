@@ -4,7 +4,7 @@ import Select from "react-select";
 import "./FilterMenu.css";
 
 function FilterMenu({ filters, onFilterChange, allCharacters, allMaps }) {
-  const [isOpen, setIsOpen] = useState(false); // Controls menu visibility on mobile
+  const [isOpen, setIsOpen] = useState(false); 
 
   const characterOptions = allCharacters.map((char) => ({
     value: char,
@@ -25,7 +25,6 @@ function FilterMenu({ filters, onFilterChange, allCharacters, allMaps }) {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
       <button
         className={`filter-toggle-btn ${isOpen ? "active" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
@@ -33,7 +32,6 @@ function FilterMenu({ filters, onFilterChange, allCharacters, allMaps }) {
         <Filter size={30} />
       </button>
 
-      {/* Filter Menu Overlay */}
       <div className={`filter-menu ${isOpen ? "open" : "closed"}`}>
         <h3>Filter Achievements</h3>
 
@@ -109,13 +107,11 @@ function FilterMenu({ filters, onFilterChange, allCharacters, allMaps }) {
           />
         </div>
 
-        {/* Clear Filters Button */}
         <button className="clear-filters-btn" onClick={clearFilters}>
           Clear All Filters
         </button>
       </div>
 
-      {/* Background Overlay for Mobile */}
       {isOpen && (
         <div className="overlay" onClick={() => setIsOpen(false)}></div>
       )}

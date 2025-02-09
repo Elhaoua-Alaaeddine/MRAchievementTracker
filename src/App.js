@@ -16,8 +16,8 @@ function App() {
     map: "",
   });
   const [activeCategory, setActiveCategory] = useState("Galacta's Guide");
-  // const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
-  const [isMenuOpen, setIsMenuOpen] = useState(true); // Track menu state
+  
+  const [isMenuOpen, setIsMenuOpen] = useState(true); 
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -34,9 +34,9 @@ function App() {
     );
 
     setAchievements(loadedAchievements);
-    // const handleResize = () => setIsMobile(window.innerWidth < 768);
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
+    
+    
+    
   }, []);
 
   const handleFilterChange = (type, values) => {
@@ -52,7 +52,7 @@ function App() {
         if (ach.id === id) {
           const updatedAch = { ...ach, completed: !ach.completed };
 
-          // Ensure null values are saved properly
+          
           if (!updatedAch.opponent) updatedAch.opponent = null;
           if (!updatedAch.partner) updatedAch.partner = null;
           if (!updatedAch.character) updatedAch.character = null;
@@ -67,30 +67,30 @@ function App() {
     });
   };
 
-  // Get all group names
+  
   const groupNames = Object.keys(characterGroups);
 
-  // Filter out group names from the character list
+  
   const allCharacters = [
     ...new Set(
       achievementsData
         .flatMap((ach) => [ach.character, ach.partner, ach.opponent])
-        .filter((char) => char && !groupNames.includes(char)) // Exclude group names
+        .filter((char) => char && !groupNames.includes(char)) 
     ),
   ];
   const allMaps = [
     ...new Set(achievementsData.map((ach) => ach.map).filter(Boolean)),
   ];
   const filteredAchievements = achievements.filter((ach) => {
-    // Ensure achievement is in the selected category
+    
     const categoryMatch = ach.category === activeCategory;
 
-    // Check if filters are applied
+    
     const hasCharacterFilter = filters.characters.length > 0;
     const hasPartnerFilter = filters.partners.length > 0;
     const hasOpponentFilter = filters.opponents.length > 0;
 
-    // Match only if a filter is selected for that category
+    
     const isInterchangeable = (selected, achCharacter) => {
       if (!selected) return false;
       if (selected.includes("Bruce Banner") && achCharacter === "Hulk")
@@ -111,17 +111,17 @@ function App() {
       if (!selectedCharacters.length) return false;
 
       return selectedCharacters.some((selected) => {
-        // Direct match
+        
         if (selected === achCharacter) return true;
 
-        // Group matching logic
+        
         if (useGroup) {
           for (const [groupName, groupMembers] of Object.entries(
             characterGroups
           )) {
-            // Check if the achievement uses a group like "Mutants"
+            
             if (achCharacter === groupName && groupMembers.includes(selected)) {
-              return true; // If "Storm" is selected and achievement is "Mutants", match!
+              return true; 
             }
           }
         }
@@ -130,7 +130,7 @@ function App() {
       });
     };
 
-    // Apply filtering
+    
     const partnerMatch = hasPartnerFilter
       ? matchesCharacterOrGroup(
           filters.partners,
@@ -146,14 +146,14 @@ function App() {
           ach.useGroupForOpponent
         )
       : false;
-    // If no filters are selected, default to showing everything in the selected category
+    
     const noFiltersApplied =
       !hasCharacterFilter && !hasPartnerFilter && !hasOpponentFilter;
 
-    // If filters are applied, ensure at least one matches
+    
     const hasAnyMatch = characterMatch || partnerMatch || opponentMatch;
 
-    // Apply map filtering strictly
+    
     const mapMatch = filters.map === "" || ach.map === filters.map;
 
     return categoryMatch && (noFiltersApplied || hasAnyMatch) && mapMatch;
@@ -181,8 +181,8 @@ function App() {
         onFilterChange={handleFilterChange}
         allCharacters={allCharacters}
         allMaps={allMaps}
-        isMenuOpen={isMenuOpen} // Pass the menu state
-        toggleMenu={toggleMenu} // Pass function to control menu
+        isMenuOpen={isMenuOpen} 
+        toggleMenu={toggleMenu} 
       />
       <div
         className={`main-content ${isMenuOpen ? "menu-open" : "menu-closed"}`}
@@ -232,13 +232,13 @@ function App() {
               key={ach.id}
               className={`achievement-card ${ach.completed ? "completed" : ""}`}
               layout
-              initial={{ opacity: 0 }} // Start slightly below and transparent
-              animate={{ opacity: 1 }} // Fade in and slide up smoothly
-              exit={{ opacity: 0 }} // Fade out when removed
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
               transition={{
-                layout: { duration: 0.5, ease: "easeInOut" }, // Controls reordering speed
-                opacity: { duration: 0.3, ease: "easeInOut" }, // Controls fade speed
-              }} // Smoother easing
+                layout: { duration: 0.5, ease: "easeInOut" }, 
+                opacity: { duration: 0.3, ease: "easeInOut" }, 
+              }} 
             >
               <div className="achievement-details">
                 <h3 className="achievement-title">{ach.title}</h3>

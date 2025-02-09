@@ -9,11 +9,11 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
-  z-index: 1100; /* Ensure it stays on top of overlay */
+  z-index: 1100;
 }
 
 .filter-menu.desktop {
-  transform: translateX(0); /* Always visible on desktop */
+  transform: translateX(0);
 }
 
 .filter-menu.mobile {
@@ -78,10 +78,12 @@
     position: fixed;
     width: 80%;
     max-width: 300px;
-    height: 100vh;
+    height: 100dvh;
     background-color: white;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1200; /* Ensure the menu is ABOVE the overlay */
+    z-index: 1200;
+    align-self: stretch;
+    flex-shrink: 0;
   }
 
   .filter-menu.open {
@@ -94,7 +96,6 @@
     transform: translateX(-100%);
   }
 
-  /* Background Overlay (Behind Menu) */
   .overlay {
     position: fixed;
     top: 0;
@@ -102,10 +103,9 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1100; /* Set LOWER than menu so it stays behind */
+    z-index: 1100;
   }
 
-  /* Mobile Toggle Button */
   .filter-toggle-btn {
     position: fixed;
     bottom: 15px;
@@ -121,16 +121,15 @@
     font-size: 16px;
     cursor: pointer;
     z-index: 1400;
-    width: auto; /* Ensure the button only takes as much space as needed */
-    height: auto; /* Ensure height adjusts to content */
+    width: auto;
+    height: auto;
     display: inline-block;
   }
 
   .filter-toggle-btn:hover {
-    background-color: #e6b800; /* Slightly darker on hover */
+    background-color: #e6b800;
   }
-  /* When the filters are open (button is active) */
   .filter-toggle-btn.active {
-    background-color: #cc9900; /* Darker Yellow */
+    background-color: #cc9900;
   }
 }

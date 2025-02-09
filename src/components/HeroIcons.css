@@ -38,7 +38,7 @@
   }
   
   .hero-icon.selected {
-    border-color: #ffcc00; /* Highlight selected heroes */
+    border-color: #ffcc00;
     background-color: rgba(255, 204, 0, 0.2);
     transform: scale(1.1);
   }

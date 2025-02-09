@@ -1,11 +1,9 @@
 const STORAGE_KEY = "marvelRivalsProgress";
 
-// Load achievements from localStorage and merge with new ones
 export const loadAchievements = (defaultAchievements) => {
     const savedData = localStorage.getItem(STORAGE_KEY);
     const savedCompletedIds = savedData ? JSON.parse(savedData) : [];
 
-    // Map achievements and mark completed ones
     return defaultAchievements.map((ach) => ({
         ...ach,
         completed: savedCompletedIds.includes(ach.id),
@@ -13,7 +11,6 @@ export const loadAchievements = (defaultAchievements) => {
 };
 
 
-// Save updated achievements
 export const saveAchievements = (achievements) => {
     const completedIds = achievements
         .filter((ach) => ach.completed)
